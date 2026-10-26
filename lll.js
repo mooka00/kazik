@@ -1,11 +1,17 @@
 const vibor = ["7", "vishnya", "vishnya", "vinograd", "vinograd", "vinograd", "slivi", "slivi", "slivi", "slivi", "yabloko", "yabloko", "yabloko", "yabloko", "yabloko"]
 let v = []
 let balance = 500
+let stavka = 0
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 const button = document.getElementById('myButton');
 button.onclick = function() {
+    stavka = +prompt('сделайте вашу ставку')
+    if (stavka > balance){
+        alert('у вас столько нету')
+        return
+    }
     for (let i = 0; i < 3; i++){
         const random = getRandomInt(0, vibor.length - 1)
         v.push(vibor[random])
