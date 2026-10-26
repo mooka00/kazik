@@ -8,17 +8,22 @@ function getRandomInt(min, max) {
 const button = document.getElementById('myButton');
 button.onclick = function() {
     stavka = +prompt('сделайте вашу ставку')
+    if(Number.isNaN(stavka)){
+        alert('вы ввели не число')
+        return
+    }
     if (stavka > balance){
         alert('у вас столько нету')
         return
     }
+    balance = balance - stavka
     for (let i = 0; i < 3; i++){
         const random = getRandomInt(0, vibor.length - 1)
         v.push(vibor[random])
     }
     
     console.log(v)
-    if (v[0] == v[1] || v[0] == v[2]){
+    if ((v[0] == v[1] || v[0] == v[2]) && !(v[0] == v[1] && v[1] == v[2])){
         const monet = getRandomInt(0, 1)
         if (monet == 0){
             v.pop();v.pop();
@@ -33,7 +38,7 @@ button.onclick = function() {
     else if(v[1] == v[2]){
         const monet = getRandomInt(0, 1)
         if (monet == 0){
-            v.pop();v.reduce();
+            v.pop();v.shift();
             v.push(v[0]);v.push(v[0]);
             console.log(monet)
         }
@@ -44,31 +49,32 @@ button.onclick = function() {
     }
     if (v[0] == v[1] && v[1] == v[2]){
         if (v[0] == "7"){
-            balance = balance*100
-            console.log('вы победили, ваш баланс увеличен в 100')
+            stavka = stavka*100
+            console.log('вы победили, ваш выйгрыш - ', stavka )
         }
         else if(v[0] == "vishnya"){
-            balance = balance*10
-            console.log('вы победили, ваш баланс увеличен в 10')
+            stavka = stavka*10
+            console.log('вы победили, ваш выйгрыш - ', stavka )
         }
         else if(v[0] == "vinograd"){
-            balance = balance*5
-            console.log('вы победили, ваш баланс увеличен в 5')
+            stavka = stavka*5
+            console.log('вы победили, ваш выйгрыш - ', stavka )
         }
         else if(v[0] == "slivi"){
-            balance = balance*3
-            console.log('вы победили, ваш баланс увеличен в 3')
+            stavka = stavka*3
+            console.log('вы победили, ваш выйгрыш - ', stavka )
         }
         else {
-            balance = balance*2
-            console.log('вы победили, ваш баланс увеличен в 2')
+            stavka = stavka*2
+            console.log('вы победили, ваш выйгрыш - ', stavka )
         }
         
     }
     else{
-        balance = balance/2
-        console.log('вы проиграли, ваш баланс уменьшился в 2')
+        stavka = 0
+        console.log('вы проиграли,')
     }
+    balance = balance + stavka
     console.log(balance)
 
     v.pop();v.pop();v.pop()
