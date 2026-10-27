@@ -1,4 +1,7 @@
-const vibor = ["7", "vishnya", "vishnya", "vinograd", "vinograd", "vinograd", "slivi", "slivi", "slivi", "slivi", "yabloko", "yabloko", "yabloko", "yabloko", "yabloko"]
+const vibor = ["7", "vishnya", "vishnya", "vinograd", "vinograd", "vinograd",
+             "slivi", "slivi", "slivi", "slivi", "yabloko", "yabloko", "yabloko",
+             "yabloko", "yabloko"]
+const COEF = { "7": 100, "vishnya": 10, "vinograd": 5, "slivi": 3, "yabloko": 2 }
 let v = []
 let balance = 500
 let stavka = 0
@@ -8,75 +11,42 @@ function getRandomInt(min, max) {
 const button = document.getElementById('myButton');
 button.onclick = function() {
     stavka = +prompt('сделайте вашу ставку')
-    if(Number.isNaN(stavka)){
-        alert('вы ввели не число')
-        return
-    }
-    if (stavka > balance){
-        alert('у вас столько нету')
-        return
-    }
-    balance = balance - stavka
+    
+    if(Number.isNaN(stavka) || stavka <= 0) return alert('вы ввели не число') 
+    
+    if (stavka > balance) return alert('у вас столько нету')
+    
+    balance -=  stavka
+    
+
     for (let i = 0; i < 3; i++){
         const random = getRandomInt(0, vibor.length - 1)
         v.push(vibor[random])
     }
+
+    console.log(v)
+
+    let para = (v[0] == v[1]) + (v[1] == v[2]) + (v[0] == v[2]) == 1
+    console.log(para)
+    if (para && getRandomInt(0,1) == 0) {
+        const z = v[0] === v[1] || v[0] === v[2] ? v[0] : v[1];
+        v.length = 0
+        v.push(z, z, z);
+        console.log(z)
+    }
     
     console.log(v)
-    if ((v[0] == v[1] || v[0] == v[2]) && !(v[0] == v[1] && v[1] == v[2])){
-        const monet = getRandomInt(0, 1)
-        if (monet == 0){
-            v.pop();v.pop();
-            v.push(v[0]);v.push(v[0]);
-            console.log(monet)
-        }
-        else{
-            console.log(monet)
-        }
-        console.log(v)
-    }
-    else if(v[1] == v[2]){
-        const monet = getRandomInt(0, 1)
-        if (monet == 0){
-            v.pop();v.shift();
-            v.push(v[0]);v.push(v[0]);
-            console.log(monet)
-        }
-        else{
-            console.log(monet)
-        }
-        console.log(v)
-    }
+
     if (v[0] == v[1] && v[1] == v[2]){
-        if (v[0] == "7"){
-            stavka = stavka*100
-            console.log('вы победили, ваш выйгрыш - ', stavka )
-        }
-        else if(v[0] == "vishnya"){
-            stavka = stavka*10
-            console.log('вы победили, ваш выйгрыш - ', stavka )
-        }
-        else if(v[0] == "vinograd"){
-            stavka = stavka*5
-            console.log('вы победили, ваш выйгрыш - ', stavka )
-        }
-        else if(v[0] == "slivi"){
-            stavka = stavka*3
-            console.log('вы победили, ваш выйгрыш - ', stavka )
-        }
-        else {
-            stavka = stavka*2
-            console.log('вы победили, ваш выйгрыш - ', stavka )
-        }
-        
+        const win = stavka * COEF[v[0]]
+        console.log('вы победили, ваш выйгрыш - ', win )
+        balance += win
     }
     else{
-        stavka = 0
         console.log('вы проиграли,')
     }
-    balance = balance + stavka
     console.log(balance)
 
-    v.pop();v.pop();v.pop()
+    v.length = 0
 
 };
