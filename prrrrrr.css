@@ -1,0 +1,51 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.hidden {
+    display: none;
+}
+
+#menu {
+    position: absolute;
+    background: #222;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 6px;
+}
+
+.structure {
+    display: flex;
+    justify-content: center;
+}
+
+.osnova {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    height: 700px;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    border: 6px solid #5a0000;
+    background: linear-gradient(145deg, #ff2e2e, #8b0000);
+    border-radius: 20px;
+}
+
+.krutka {
+    width: 100px;
+    height: 50px;
+}
+
+.koleso {}
+
+.elkoleso {}
+
+.balance {
+    font-size: 50px;
+    color: yellow;
+
+}
