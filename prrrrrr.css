@@ -40,12 +40,48 @@
     height: 50px;
 }
 
-.koleso {}
+.koleso {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: white;
 
-.elkoleso {}
+    width: auto;
+    height: auto;
+}
 
+#grid {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.square {
+    display: flex;
+    border: 5px solid black;
+    justify-content: center;
+    align-items: center;
+    font-size: 150px;
+}
+.stavka{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: auto;
+    height: auto;
+    gap: 20px;
+    font-size: 50px;
+    color: black;
+}
+#stavka{
+    background-color: white;
+    border: 5px solid black;
+    display: flex;
+    text-align: center;
+    padding-top: 15px;
+}
 .balance {
     font-size: 50px;
     color: yellow;
-
 }
