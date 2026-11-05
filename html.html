@@ -11,15 +11,28 @@
 
 <body>
     <main>
-        <button id="menuBtn">Меню</button>
-        <nav id="menu" class="hidden">
-            <ul>
-                <li><a href="#">Главная</a></li>
-                <li><a href="#">О нас</a></li>
-                <li><a href="#">Контакты</a></li>
-            </ul>
+        <button id="shopBtn">Магазин</button>
+        <nav id="shop" class="hidden">
+            <div class="shop">
+                <div class="upgradeall">
+                    <button id="upgrade1" class="upgrade">увеличить выйгрыш в полтора раза</button>
+                    <p id="money1"></p>
+                    <p id="max1">/5</p>
+                    <p id="bonus">в общем баф</p>
+                </div>
+                <div class="upgradeall">
+                    <button id="upgrade1" class="upgrade">увеличить количество барабанов на 1</button>
+                    <p id="money2"></p>
+                    <p id="max2">/2</p>
+                </div>
+                <div class="upgradeall">
+                    <button id="upgrade1" class="upgrade">увеличить шанс победы при 7</button>
+                    <p id="money3"></p>
+                    <p id="max3">/3</p>
+                </div>
+            </div>
         </nav>
-        <div class="structure">
+        <div id="structure">
             <div class="osnova">
                 <div class="balance">
                     <p id="balance"></p>
@@ -30,14 +43,14 @@
                 <div class="stavka">
                     <textarea name="" id="stavka"></textarea>
                     <button id="myButton" class="krutka">
-                    <p>крутить</p>
+                        <p>крутить</p>
                     </button>
                 </div>
-                
+
             </div>
         </div>
-        
-        
+
+
     </main>
 </body>
 
